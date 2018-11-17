@@ -1,5 +1,5 @@
 # Learn-php
-# Learn php
-# function Estimated value.
-# function Compare the number of
-# function Check and number formatting
+Learn php <br />
+function Estimated value. <br />
+function Compare the number of. <br />
+function Check and number formatting. <br />
