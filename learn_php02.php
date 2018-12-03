@@ -1,3 +1,4 @@
+
 <?php
 
 // $a = array('th'=>"thailand",'jp'=>"japan",'kr'=>"Korea");
@@ -65,9 +66,53 @@ function date_time(){
       $month = $months[$m]; //เอาลำดับของเดือนแบบไม่มี 0 นำหน้ามาเป็น key ให้กับตัวแปร $months ที่เก็บ array ของเดือนทั้ง 12 ไว้โดยมี key เริ่มต้นที่ 1
       $year = date('Y') + 543; //ปี พ.ศ + 543 
       echo "<br>วันนี้ตรงกับวัน $day วันที่ $date เดือน $month ปี $year <br>";
-      echo date("ขณะนี้เวลา H:i:s");
+      echo date("ขณะนี้เวลา H:i:s")."</br>";
 }
+// function size_file()
+// {
+
+//       $get_path = "img_00123456789.png";
+//       $pathinfo = pathinfo($get_path, PATHINFO_BASENAME);
+//       $bytes = filesize($pathinfo);
+//       $size = $bytes . " Bytes";
+//       if($bytes >= 1073741824){ // 1 GB
+
+//             $size = $bytes / 1073741824;
+//             $size = round($size,2) . " GB";
+
+//       }
+
+//       else if($bytes >= 1048576){ // 1 MB
+
+//             $size = $bytes / 1048576;
+//             $size = round($size,2). " MB";
+
+//       }
+
+//       else if($bytes >= 1024){ // 1 KB
+
+//             $size = $bytes / 1024;
+//             $size = round($size,2) . " KB";
+
+//       }
+
+//       echo "ไฟล์: $pathinfo มีขนาด $size<br>";
+      
+//       // if(file_exists($get_path)){
+
+//       //       echo "have file";
+
+//       // }else{
+//       //       echo "No file";
+//       // }
+
+// }
+
+
+
+
 ceil_num_01();
 Compare();
 Formatting_numbers();
 date_time();
+size_file();
