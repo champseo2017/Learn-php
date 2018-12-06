@@ -68,45 +68,77 @@ function date_time(){
       echo "<br>วันนี้ตรงกับวัน $day วันที่ $date เดือน $month ปี $year <br>";
       echo date("ขณะนี้เวลา H:i:s")."</br>";
 }
-// function size_file()
-// {
+function size_file()
+{
 
-//       $get_path = "img_00123456789.png";
-//       $pathinfo = pathinfo($get_path, PATHINFO_BASENAME);
-//       $bytes = filesize($pathinfo);
-//       $size = $bytes . " Bytes";
-//       if($bytes >= 1073741824){ // 1 GB
+      $get_path = "img_00123456789.png";
+      $pathinfo = pathinfo($get_path, PATHINFO_BASENAME);
+      $bytes = filesize($pathinfo);
+      $size = $bytes . " Bytes";
+      if($bytes >= 1073741824){ // 1 GB
 
-//             $size = $bytes / 1073741824;
-//             $size = round($size,2) . " GB";
+            $size = $bytes / 1073741824;
+            $size = round($size,2) . " GB";
 
-//       }
+      }
 
-//       else if($bytes >= 1048576){ // 1 MB
+      else if($bytes >= 1048576){ // 1 MB
 
-//             $size = $bytes / 1048576;
-//             $size = round($size,2). " MB";
+            $size = $bytes / 1048576;
+            $size = round($size,2). " MB";
 
-//       }
+      }
 
-//       else if($bytes >= 1024){ // 1 KB
+      else if($bytes >= 1024){ // 1 KB
 
-//             $size = $bytes / 1024;
-//             $size = round($size,2) . " KB";
+            $size = $bytes / 1024;
+            $size = round($size,2) . " KB";
 
-//       }
+      }
 
-//       echo "ไฟล์: $pathinfo มีขนาด $size<br>";
+      echo "ไฟล์: $pathinfo มีขนาด $size<br>";
       
-//       // if(file_exists($get_path)){
+      // if(file_exists($get_path)){
 
-//       //       echo "have file";
+      //       echo "have file";
 
-//       // }else{
-//       //       echo "No file";
-//       // }
+      // }else{
+      //       echo "No file";
+      // }
 
-// }
+}
+
+function vis_count () {
+      $f = "counter.txt"; //ชื่อไฟล์สำหรับเก็บข้อมูล
+      $v = 0;
+      if(file_exists($f)){
+            $v = file_get_contents($f);
+      }
+      else{
+            $v = 1; //กำหนอดค่าเริ่มต้นที่ต้องการ
+      }
+      $v = intval($v) + 1; //เพิ่มค่าจากเดิมไปอีก 1
+      $html_decimail = array("&#9450;","&#9312;","&#9313;","&#9314;",
+                              "&#9315;","&#9316;","&#9317;","&#9318;",
+                              "&#9319;","&#9320;"
+                              );
+      $visitor = number_format($v);
+      $len = strlen($visitor);
+      $counter = "";
+      for($i = 0; $i < $len; $i++){
+            $n = $visitor[$i]; //จากหลักการที่ว่า string คือ array ของอักขระ
+            if($n != ","){
+
+                  $counter .= $html_decimail[$n];
+
+            }
+            else{ $counter .= ","; }
+      }
+
+      echo "<div id=\"visitor\">คุณเป็นผู้เยียมชมเว็บไซต์ลำดับที่:<span>$counter</span></div><br>";
+      file_put_contents($f,$v); //อัพเดตโดยเขียนทับจำนวนเดิม(ถ้าไม่มีไฟล์อยู่ก่อน ไฟล์จะถูกสร้างให้เอง)
+
+}
 
 
 
@@ -116,3 +148,4 @@ Compare();
 Formatting_numbers();
 date_time();
 size_file();
+vis_count();
